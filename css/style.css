@@ -86,10 +86,20 @@ body::before {
   border-radius: 0;
   filter: brightness(0.93) saturate(1.08);
   transition: filter 0.7s;
+  /* Эффект появления для hero-image-img */
+  opacity: 0;
+  transform: translateY(-32px);
+  transition: opacity var(--fade-block-duration, 0.8s) cubic-bezier(.23,1.01,.32,1), transform var(--fade-block-duration, 0.8s) cubic-bezier(.23,1.01,.32,1);
+  will-change: opacity, transform;
 }
 
 .hero-image-img:hover {
   filter: brightness(1) saturate(1.15);
+}
+
+.hero-image-img.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-overlay {

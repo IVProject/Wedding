@@ -38,4 +38,22 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     showAll();
   }
+
+  // Эффект плавного изменения opacity для hero-image-img (заметно плавнее)
+  var heroImg = document.querySelector('.hero-image-img');
+  if (heroImg) {
+    heroImg.classList.remove('visible');
+    function fadeInHeroImg() {
+      heroImg.style.transition = 'opacity 2.8s cubic-bezier(.23,1.01,.32,1)';
+      heroImg.style.opacity = '0';
+      setTimeout(function() {
+        heroImg.style.opacity = '1';
+      }, 80);
+    }
+    if (heroImg.complete) {
+      fadeInHeroImg();
+    } else {
+      heroImg.addEventListener('load', fadeInHeroImg);
+    }
+  }
 });
