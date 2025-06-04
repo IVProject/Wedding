@@ -209,6 +209,23 @@ body::before {
   font-family: 'Bad Script', cursive, Arial, sans-serif;
 }
 
+/* Эффект появления снизу вверх для блоков контента */
+.intro-section,
+.timeline,
+.info-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity var(--fade-block-duration, 0.8s) cubic-bezier(.23,1.01,.32,1), transform var(--fade-block-duration, 0.8s) cubic-bezier(.23,1.01,.32,1);
+  will-change: opacity, transform;
+}
+
+.intro-section.visible,
+.timeline.visible,
+.info-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* =========================
   Timeline
   ========================= */
@@ -498,7 +515,6 @@ body::before {
    height: 100vh;
   }
   .hero-content {
-   opacity: 0;
    margin: 0;
   }
   .scroll-arrow {
@@ -648,13 +664,3 @@ body::before {
   display: none !important;
 }
 
-/* Анимация появления текста */
-.hero-content {
-  opacity: 0;
-  animation: fadeInContent 1.2s cubic-bezier(.23,1.01,.32,1) forwards;
-}
-
-@keyframes fadeInContent {
-  from { opacity: 0; transform: translateY(30px);}
-  to   { opacity: 1; transform: translateY(0);}
-}
